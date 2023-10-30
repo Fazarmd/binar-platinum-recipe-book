@@ -3,11 +3,6 @@ import { getRecipesById } from "./recipe/getRecipesById.controller.js";
 import { addRecipes } from "./recipe/addRecipes.controller.js";
 import { editRecipesById } from "./recipe/editRecipesById.controller.js";
 import { deleteRecipesById } from "./recipe/deleteRecipesById.controller.js";
+import { getRecipesByUser } from "./recipe/getRecipebyUser.controller.js";
 
-export {
-  getRecipes,
-  getRecipesById,
-  addRecipes,
-  editRecipesById,
-  deleteRecipesById,
-};
+export { getRecipes, getRecipesById, addRecipes, editRecipesById, deleteRecipesById, getRecipesByUser };

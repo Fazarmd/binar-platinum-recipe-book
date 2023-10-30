@@ -9,10 +9,12 @@ class RecipeModels {
     instruction,
     caption,
     category,
-    imageFilename
+    imageFilename,
+    userId // Parameter ID pengguna
   ) {
     const newRecipe = {
       id: v4(),
+      user_id: userId, // Gunakan ID pengguna yang sudah login
       title,
       ingredients,
       instruction,
@@ -20,7 +22,7 @@ class RecipeModels {
       category,
       img_filename: imageFilename,
     };
-    return await db.insert(newRecipe).into("recipe").returning("*"); //.returning
+    return await db.insert(newRecipe).into("recipe").returning("*");
   }
 
   //Get getRecipes
@@ -47,6 +49,12 @@ class RecipeModels {
   //Update editRecipesById
   async edit(id, body) {
     return await db.update(body).table("recipe").where({ id }).returning("*");
+  }
+
+  //Get Recipes by User
+  async getUserRecipes(userId) {
+    const userRecipes = await db.select("*").from("recipe").where("user_id", userId);
+    return userRecipes;
   }
 }
 

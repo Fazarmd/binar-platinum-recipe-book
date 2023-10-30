@@ -1,7 +1,4 @@
-import {
-  responseOk,
-  responseError,
-} from "../../helpers/restResponse.helper.js";
+import { responseOk, responseError } from "../../helpers/restResponse.helper.js";
 import CookBookModels from "../../models/recipe.models.js";
 
 const models = new CookBookModels();
@@ -16,9 +13,7 @@ async function deleteRecipesById(req, res) {
 
     return res.status(200).json(responseOk(`Success delete ${id}`, data));
   } catch (error) {
-    return res
-      .status(500)
-      .json(responseError("something went wrong", error.message));
+    return res.status(500).json(responseError("something went wrong", error.message));
   }
 }
 

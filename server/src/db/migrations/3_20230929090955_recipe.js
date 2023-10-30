@@ -5,6 +5,7 @@
 export async function up(knex) {
   return knex.schema.createTable("recipe", (table) => {
     table.uuid("id").unique().notNullable().primary();
+    table.uuid("user_id").references("id").inTable("users").onDelete("CASCADE").onUpdate("CASCADE");
     table.text("title").notNullable();
     table.text("ingredients").notNullable();
     table.text("instruction").notNullable();
